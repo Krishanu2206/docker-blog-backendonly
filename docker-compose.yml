@@ -1,0 +1,26 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:stable-alpine 
+    ports:
+      - "8080:80"
+      
+  node-app:
+    build: .
+    environment:
+      - PORT=8080
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sayan
+      - MONGO_INITDB_ROOT_PASSWORD=ananya
+    volumes:
+      - mongo-db:/data/db 
+      # //named volume
+
+
+volumes:
+  mongo-db:

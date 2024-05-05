@@ -1,0 +1,29 @@
+version: "3"
+services:
+  nginx:
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
+  node-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - MONGO_USER=sayan
+      - MONGO_PASSWORD=ananya
+      - SESSION_SECRET=ananya
+    command: npm run dev
+  
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sayan
+      - MONGO_INITDB_ROOT_PASSWORD=ananya
+  
