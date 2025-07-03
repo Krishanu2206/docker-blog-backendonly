@@ -4,7 +4,7 @@ services:
     image: nginx:stable-alpine 
     ports:
       - "8080:80"
-      
+
   node-app:
     build: .
     environment:
@@ -15,8 +15,8 @@ services:
   mongo:
     image: mongo
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=sayan
-      - MONGO_INITDB_ROOT_PASSWORD=ananya
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     volumes:
       - mongo-db:/data/db 
       # //named volume

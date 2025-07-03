@@ -16,14 +16,14 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - MONGO_USER=sayan
-      - MONGO_PASSWORD=ananya
-      - SESSION_SECRET=ananya
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - SESSION_SECRET=${SESSION_SECRET}
     command: npm run dev
   
   mongo:
     image: mongo
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=sayan
-      - MONGO_INITDB_ROOT_PASSWORD=ananya
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
   
